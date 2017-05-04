@@ -3,11 +3,17 @@ package errors
 import "fmt"
 
 type Error struct {
-  Code int,
+  ErrorCode int,
   Message string
 }
 
+type ErrorCode int
+
 const (
-  someError Error = iota
+  someError ErrorCode = iota
   anotherError
 )
+
+func (e Error) String() string {
+  return fmt.Sprintf("%q", e.Message) 
+}
